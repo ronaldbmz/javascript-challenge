@@ -88,6 +88,23 @@ function filterState(data, inputValue) {
 
 }
 
+function filterCountry(data, inputValue) {
+	
+	// Select the input country element and get the raw HTML node
+	var inputCountry = d3.select("#country");
+	// Get the country value property of the input element
+	var inputCountryValue = inputCountry.property("value");
+	//console.log(inputCountryValue);
+
+	if (inputCountryValue === "") {
+		return data;
+	} else {
+		 return data.country.toUpperCase() === inputCountryValue.toUpperCase();
+	}
+
+}
+
+
 // Select the button
 var button = d3.select("#filter-btn");
 
@@ -108,7 +125,8 @@ function runEnter() {
     var rows = tableData.filter(filterDate);
     rows = rows.filter(filterCity);
 	rows = rows.filter(filterState);
-	
+    rows = rows.filter(filterCountry);
+    
 	html = "";
 	
 	for (var i = 0; i < rows.length; i++) {
