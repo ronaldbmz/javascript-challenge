@@ -13,7 +13,8 @@ function toCamelCase(str) {
         .replace(/^(.)/, function($1) { return $1.toUpperCase(); });
 }
 
-console.log(toCamelCase("benton"));
+// testing camelcase function
+//console.log(toCamelCase("benton"));
 
 	
 html = "";
@@ -21,10 +22,10 @@ html = "";
 for (var i = 0; i < rows.length; i++) {
 html+="<tr>";
 html+="<td>"+rows[i].datetime+"</td>";
-html+="<td>"+rows[i].city+"</td>";
-html+="<td>"+rows[i].state+"</td>";
-html+="<td>"+rows[i].country+"</td>";
-html+="<td>"+rows[i].shape+"</td>";
+html+="<td>"+toCamelCase(rows[i].city)+"</td>";
+html+="<td>"+rows[i].state.toUpperCase()+"</td>";
+html+="<td>"+rows[i].country.toUpperCase()+"</td>";
+html+="<td>"+toCamelCase(rows[i].shape)+"</td>";
 html+="<td>"+rows[i].durationMinutes+"</td>";
 html+="<td>"+rows[i].comments+"</td>";
 html+="</tr>";
