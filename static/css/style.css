@@ -228,6 +228,8 @@ select {
   color: #ffffff;
   background-color: #4e5d6c;
   border-color: white;
+  margin-left: 15px;
+  width: 100px;
 }
 .btn-default:hover {
   color: #ffffff;
