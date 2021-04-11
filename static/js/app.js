@@ -56,16 +56,27 @@ function filterDate(data, inputValue) {
 
 }
 
+function filterCity(data, inputValue) {
+
+	// Select the input city element and get the raw HTML node
+	var inputCity = d3.select("#city");
+	// Get the city value property of the input element
+	var inputCityValue = inputCity.property("value");
+	//console.log(inputCityValue);
+
+	if (inputCityValue === "") {
+		return data;
+	} else {
+		 return data.city.toUpperCase() === inputCityValue.toUpperCase();
+	}
+
+}
 
 // Select the button
 var button = d3.select("#filter-btn");
 
 // Select the form
 var form = d3.select("#form");
-
-// Create event handlers 
-button.on("click", runEnter);
-form.on("submit",runEnter);
 
 // Complete the event handler function for the form
 function runEnter() {
@@ -74,7 +85,8 @@ function runEnter() {
 	d3.event.preventDefault();
 	
 	// Use the form input to filter the data
-	var rows = tableData.filter(filterDate);
+    var rows = tableData.filter(filterDate);
+    rows = rows.filter(filterCity);
 	
 	
 	html = "";
